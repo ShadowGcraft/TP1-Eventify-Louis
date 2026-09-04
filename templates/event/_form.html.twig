@@ -1,0 +1,6 @@
+{# novalidate : on veut voir les messages de Symfony, pas ceux du navigateur #}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-primary mt-3">{{ button_label|default('Enregistrer') }}</button>
+    <a href="{{ path('app_event_index') }}" class="btn btn-outline-secondary mt-3">Annuler</a>
+{{ form_end(form) }}

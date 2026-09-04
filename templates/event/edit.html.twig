@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un événement{% endblock %}
+
+{% block body %}
+    <h1 class="mb-4">Modifier « {{ event.title }} »</h1>
+
+    {{ include('event/_form.html.twig', {button_label: 'Mettre à jour'}) }}
+{% endblock %}

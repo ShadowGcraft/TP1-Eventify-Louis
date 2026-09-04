@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ event.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ event.title }}</h1>
+
+    <p>{{ event.description|nl2br }}</p>
+
+    <ul class="list-group mb-4" style="max-width: 500px;">
+        <li class="list-group-item">Date : {{ event.eventDate|date('d/m/Y à H:i') }}</li>
+        <li class="list-group-item">Lieu : {{ event.location }}</li>
+        <li class="list-group-item">
+            Places restantes :
+            {% if event.capacity > 0 %}
+                {{ event.capacity }}
+            {% else %}
+                <span class="badge bg-danger">Complet</span>
+            {% endif %}
+        </li>
+    </ul>
+
+    <form method="post" action="{{ path('app_event_register', {id: event.id}) }}" class="d-inline">
+        <button class="btn btn-primary" {{ event.capacity > 0 ? '' : 'disabled' }}>S'inscrire</button>
+    </form>
+    <a href="{{ path('app_event_edit', {id: event.id}) }}" class="btn btn-outline-secondary">Modifier</a>
+    <a href="{{ path('app_event_index') }}" class="btn btn-link">Retour à la liste</a>
+
+    {{ include('event/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,4 @@
+# Jetons CSRF classiques (stockés en session). Le squelette active par défaut le
+# mode "stateless", qui a besoin de JavaScript pour calculer le jeton.
+framework:
+    csrf_protection: true
